@@ -42,3 +42,23 @@ Predicciones orientativas para comparar con la ejecución. Los bloques se ejecut
 3. Sin comparador, las notas 10, 9 y 1 quedarían [1, 10, 9], al ordenarse como texto.
 
 Corrección del enunciado: con los datos iniciales, el orden correcto empieza por Lucía (10), Marta (9,25) y Hugo (9). La indicación de que Hugo debe quedar segundo contradice la nota de Marta.
+
+## Fase 3 · Estadísticas de la clase
+
+Para Ana 7,5, Luis 4, Marta 9,25 y Pablo 5: media 6,4375; máxima 9,25; aprobados Ana, Marta y Pablo; hayAlgunDiez false; todosAprobados false; ranking de dos: Marta y Ana.
+
+| Función con lista vacía | Resultado |
+|---|---|
+| notaMedia([]) | 0 |
+| notaMaxima([]) | null |
+| aprobados([]) | [] |
+| nombresAprobados([]) | [] |
+| hayAlgunDiez([]) | false |
+| todosAprobados([]) | true |
+| ranking([], 2) | [] |
+
+1. reduce necesita un acumulador inicial si no hay elementos. [].reduce((a, b) => a + b) lanza TypeError: Reduce of empty array with no initial value. Con el valor inicial 0, devuelve 0. Si notaMedia conserva la comprobación previa de longitud, la lista vacía devuelve 0 antes de llegar a reduce; para observar el error se ejecuta reduce directamente, sin esa protección.
+2. every en una lista vacía devuelve true porque no existe ningún elemento que incumpla la condición. Esto no significa que haya alumnos aprobados; significa que no hay ningún suspenso.
+3. map transforma cada elemento y mantiene la cantidad: aprobados(lista).map(a => a.nombre) devuelve nombres. filter selecciona elementos: lista.filter(a => a.nota >= 5) devuelve solo los aprobados.
+
+Ninguna función de estadísticas altera el array original. Las copias son superficiales: no se editan los objetos de alumnos.

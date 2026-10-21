@@ -64,3 +64,46 @@ function ordenarPorNota(lista) { return [...lista].sort((a,b)=>b.nota-a.nota); }
  * @returns {{nombre:string, nota:number}[]} Copia ordenada por nombre.
  */
 function ordenarPorNombre(lista) { return [...lista].sort((a,b)=>a.nombre.localeCompare(b.nombre,'es',{sensitivity:'base'})); }
+
+/** Calcula la media sin redondear. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @returns {number} Media o 0 si la lista está vacía.
+ */
+function notaMedia(lista) { return lista.length ? lista.reduce((suma,alumno)=>suma+alumno.nota,0)/lista.length : 0; }
+
+/** Busca la nota máxima. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @returns {number|null} Nota máxima o null si no hay alumnos.
+ */
+function notaMaxima(lista) { return lista.length ? Math.max(...lista.map(alumno=>alumno.nota)) : null; }
+
+/** Selecciona notas de cinco o más. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @returns {{nombre:string, nota:number}[]} Nuevo array con aprobados.
+ */
+function aprobados(lista) { return lista.filter(alumno=>alumno.nota>=5); }
+
+/** Obtiene nombres usando aprobados y map. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @returns {string[]} Nombres de los aprobados.
+ */
+function nombresAprobados(lista) { return aprobados(lista).map(alumno=>alumno.nombre); }
+
+/** Comprueba si existe una nota diez. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @returns {boolean} Si algún alumno tiene diez.
+ */
+function hayAlgunDiez(lista) { return lista.some(alumno=>alumno.nota===10); }
+
+/** Comprueba que no haya suspensos. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @returns {boolean} Si todos aprueban; true en la lista vacía.
+ */
+function todosAprobados(lista) { return lista.every(alumno=>alumno.nota>=5); }
+
+/** Selecciona los mejores alumnos. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @param {number} n Número de puestos, entero no negativo.
+ * @returns {{nombre:string, nota:number}[]} Nuevo array con hasta n alumnos; vacío si n es inválido.
+ */
+function ranking(lista,n) { return Number.isInteger(n) && n>=0 ? ordenarPorNota(lista).slice(0,n) : []; }
