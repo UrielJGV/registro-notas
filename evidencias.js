@@ -1,0 +1,12 @@
+"use strict";
+const elemento=id=>document.getElementById(id);
+explorarArrays().forEach(d=>{const tr=document.createElement('tr');for(const valor of [d.linea,d.resultado]){const td=document.createElement('td');td.textContent=String(valor);tr.append(td);}elemento('exploracion').append(tr);});
+const base=()=>[{nombre:'Ana',nota:7.5},{nombre:'Luis',nota:4}];
+let lista=base();const cantidad=anadirAlumno(lista,'Eva',8);
+elemento('gestion').textContent=JSON.stringify({anadir:{devuelve:cantidad,lista},quitarUltimo:quitarUltimo(base()),buscarAna:buscarPorNombre(base(),'Ana'),buscarPepe:String(buscarPorNombre(base(),'Pepe')),ordenInicialPorNota:ordenarPorNota(ALUMNOS_INICIALES)},null,2);
+const cuatro=[...base(),{nombre:'Marta',nota:9.25},{nombre:'Pablo',nota:5}];
+elemento('estadisticas').textContent=JSON.stringify({media:notaMedia(cuatro),maxima:notaMaxima(cuatro),aprobados:nombresAprobados(cuatro),hayDiez:hayAlgunDiez(cuatro),todosAprobados:todosAprobados(cuatro),ranking:ranking(cuatro,2),vacia:{media:notaMedia([]),maxima:notaMaxima([]),aprobados:aprobados([]),nombres:nombresAprobados([]),hayDiez:hayAlgunDiez([]),todos:todosAprobados([]),ranking:ranking([],2)}},null,2);
+const resultados=ejecutarPruebas();
+elemento('resultado-pruebas').textContent=`${resultados.filter(r=>r.correcta).length}/${resultados.length} pruebas superadas.`;
+resultados.forEach(r=>{const li=document.createElement('li');li.textContent=`${r.correcta?'✓':'✗'} ${r.descripcion}`;elemento('pruebas').append(li);});
+elemento('depuracion').textContent=JSON.stringify(ejecutarDepuracion(ALUMNOS_INICIALES),null,2);

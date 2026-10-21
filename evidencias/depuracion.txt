@@ -1,0 +1,55 @@
+Fallo 1: orden como texto [ 1, 10, 5, 9 ]
+┌─────────┬─────────┬──────┐
+│ (index) │ nombre  │ nota │
+├─────────┼─────────┼──────┤
+│ 0       │ 'Sara'  │ 1    │
+│ 1       │ 'Diego' │ 3.5  │
+│ 2       │ 'Luis'  │ 4    │
+│ 3       │ 'Pablo' │ 5    │
+│ 4       │ 'Iván'  │ 5.5  │
+│ 5       │ 'Elena' │ 6.75 │
+│ 6       │ 'Ana'   │ 7.5  │
+│ 7       │ 'Hugo'  │ 9    │
+│ 8       │ 'Marta' │ 9.25 │
+│ 9       │ 'Lucía' │ 10   │
+└─────────┴─────────┴──────┘
+Fallo 3: Reduce of empty array with no initial value
+Sara
+Diego
+Luis
+Pablo
+Iván
+Elena
+Ana
+Hugo
+Marta
+Lucía
+Fallo 4: Cannot read properties of undefined (reading 'nombre')
+┌─────────┬─────────┬──────┐
+│ (index) │ nombre  │ nota │
+├─────────┼─────────┼──────┤
+│ 0       │ 'Ana'   │ 7.5  │
+│ 1       │ 'Luis'  │ 4    │
+│ 2       │ 'Marta' │ 9.25 │
+│ 3       │ 'Pablo' │ 5    │
+│ 4       │ 'Lucía' │ 10   │
+│ 5       │ 'Diego' │ 3.5  │
+│ 6       │ 'Elena' │ 6.75 │
+│ 7       │ 'Hugo'  │ 9    │
+│ 8       │ 'Sara'  │ 1    │
+│ 9       │ 'Iván'  │ 5.5  │
+└─────────┴─────────┴──────┘
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│ 0       │ 7.5    │
+│ 1       │ 4      │
+│ 2       │ 9.25   │
+│ 3       │ 5      │
+│ 4       │ 10     │
+│ 5       │ 3.5    │
+│ 6       │ 6.75   │
+│ 7       │ 9      │
+│ 8       │ 1      │
+│ 9       │ 5.5    │
+└─────────┴────────┘

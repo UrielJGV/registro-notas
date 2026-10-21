@@ -1,0 +1,76 @@
+┌─────────┬────────────────────────────────────────────────┬──────────┬───────────────────────────────────────────────────┬───────────────────────────────────────────────────┐
+│ (index) │ descripcion                                    │ correcta │ obtenido                                          │ esperado                                          │
+├─────────┼────────────────────────────────────────────────┼──────────┼───────────────────────────────────────────────────┼───────────────────────────────────────────────────┤
+│ 0       │ 'Añadir devuelve longitud'                     │ true     │ 3                                                 │ 3                                                 │
+│ 1       │ 'Añadir modifica la lista'                     │ true     │ [ 'Ana', 'Luis', 'Eva' ]                          │ [ 'Ana', 'Luis', 'Eva' ]                          │
+│ 2       │ 'Añadir a lista vacía'                         │ true     │ 1                                                 │ 1                                                 │
+│ 3       │ 'Quitar devuelve último'                       │ true     │ { nombre: 'Luis', nota: 4 }                       │ { nombre: 'Luis', nota: 4 }                       │
+│ 4       │ 'Quitar modifica lista'                        │ true     │ [ 'Ana' ]                                         │ [ 'Ana' ]                                         │
+│ 5       │ 'Quitar de vacía'                              │ true     │ 'undefined'                                       │ 'undefined'                                       │
+│ 6       │ 'Buscar existente'                             │ true     │ { nombre: 'Ana', nota: 7.5 }                      │ { nombre: 'Ana', nota: 7.5 }                      │
+│ 7       │ 'Buscar inexistente'                           │ true     │ 'undefined'                                       │ 'undefined'                                       │
+│ 8       │ 'Buscar sin mayúsculas ni espacios exteriores' │ true     │ { nombre: 'Ana', nota: 7.5 }                      │ { nombre: 'Ana', nota: 7.5 }                      │
+│ 9       │ 'Insertar no devuelve valor'                   │ true     │ 'undefined'                                       │ 'undefined'                                       │
+│ 10      │ 'Insertar sin borrar'                          │ true     │ [ 'Ana', 'Eva', 'Luis' ]                          │ [ 'Ana', 'Eva', 'Luis' ]                          │
+│ 11      │ 'Insertar en vacía'                            │ true     │ [ [Object] ]                                      │ [ [Object] ]                                      │
+│ 12      │ 'Borrar existente'                             │ true     │ true                                              │ true                                              │
+│ 13      │ 'Borrar modifica lista'                        │ true     │ [ 'Ana' ]                                         │ [ 'Ana' ]                                         │
+│ 14      │ 'Borrar inexistente'                           │ true     │ false                                             │ false                                             │
+│ 15      │ 'Borrar inexistente conserva lista'            │ true     │ [ 'Ana' ]                                         │ [ 'Ana' ]                                         │
+│ 16      │ 'Borrar en vacía'                              │ true     │ false                                             │ false                                             │
+│ 17      │ 'Orden por nota'                               │ true     │ [ 'Lucía', 'Ana', 'Luis' ]                        │ [ 'Lucía', 'Ana', 'Luis' ]                        │
+│ 18      │ 'Orden por nombre español'                     │ true     │ [ 'Ana', 'Lucía', 'Luis' ]                        │ [ 'Ana', 'Lucía', 'Luis' ]                        │
+│ 19      │ 'Ordenar no modifica origen'                   │ true     │ [ 'Luis', 'Ana', 'Lucía' ]                        │ [ 'Luis', 'Ana', 'Lucía' ]                        │
+│ 20      │ 'Orden nota devuelve copia'                    │ true     │ true                                              │ true                                              │
+│ 21      │ 'Orden nombre devuelve copia'                  │ true     │ true                                              │ true                                              │
+│ 22      │ 'Orden numérico 10, 9, 1'                      │ true     │ [ 10, 9, 1 ]                                      │ [ 10, 9, 1 ]                                      │
+│ 23      │ 'Ranking inicial corrige errata'               │ true     │ [ 'Lucía', 'Marta', 'Hugo' ]                      │ [ 'Lucía', 'Marta', 'Hugo' ]                      │
+│ 24      │ 'Media ejemplo'                                │ true     │ 6.4375                                            │ 6.4375                                            │
+│ 25      │ 'Media vacía'                                  │ true     │ 0                                                 │ 0                                                 │
+│ 26      │ 'Máxima ejemplo'                               │ true     │ 9.25                                              │ 9.25                                              │
+│ 27      │ 'Máxima vacía'                                 │ true     │ null                                              │ null                                              │
+│ 28      │ 'Aprobados incluye el cinco'                   │ true     │ [ 'Ana', 'Marta', 'Pablo' ]                       │ [ 'Ana', 'Marta', 'Pablo' ]                       │
+│ 29      │ 'Aprobados vacía'                              │ true     │ []                                                │ []                                                │
+│ 30      │ 'Nombres de aprobados'                         │ true     │ [ 'Ana', 'Marta', 'Pablo' ]                       │ [ 'Ana', 'Marta', 'Pablo' ]                       │
+│ 31      │ 'Nombres vacía'                                │ true     │ []                                                │ []                                                │
+│ 32      │ 'No hay diez en ejemplo'                       │ true     │ false                                             │ false                                             │
+│ 33      │ 'Hay diez en iniciales'                        │ true     │ true                                              │ true                                              │
+│ 34      │ 'Hay diez en vacía'                            │ true     │ false                                             │ false                                             │
+│ 35      │ 'No todos aprobados'                           │ true     │ false                                             │ false                                             │
+│ 36      │ 'Todos aprobados'                              │ true     │ true                                              │ true                                              │
+│ 37      │ 'Todos aprobados en vacía'                     │ true     │ true                                              │ true                                              │
+│ 38      │ 'Ranking de dos'                               │ true     │ [ 'Marta', 'Ana' ]                                │ [ 'Marta', 'Ana' ]                                │
+│ 39      │ 'Ranking de cero'                              │ true     │ []                                                │ []                                                │
+│ 40      │ 'Ranking vacía'                                │ true     │ []                                                │ []                                                │
+│ 41      │ 'Ranking mayor que lista'                      │ true     │ 4                                                 │ 4                                                 │
+│ 42      │ 'Ranking negativo'                             │ true     │ []                                                │ []                                                │
+│ 43      │ 'Filtro aprobados'                             │ true     │ [ 'Ana', 'Marta', 'Pablo' ]                       │ [ 'Ana', 'Marta', 'Pablo' ]                       │
+│ 44      │ 'Filtro suspensos'                             │ true     │ [ 'Luis' ]                                        │ [ 'Luis' ]                                        │
+│ 45      │ 'Filtro todos conserva datos'                  │ true     │ [ [Object], [Object], [Object], ... 1 more item ] │ [ [Object], [Object], [Object], ... 1 more item ] │
+│ 46      │ 'Filtro todos devuelve copia'                  │ true     │ true                                              │ true                                              │
+│ 47      │ 'Orden descendente'                            │ true     │ [ 9.25, 7.5, 5, ... 1 more item ]                 │ [ 9.25, 7.5, 5, ... 1 more item ]                 │
+│ 48      │ 'Orden ascendente'                             │ true     │ [ 4, 5, 7.5, ... 1 more item ]                    │ [ 4, 5, 7.5, ... 1 more item ]                    │
+│ 49      │ 'Orden nombre'                                 │ true     │ [ 'Ana', 'Luis', 'Marta', ... 1 more item ]       │ [ 'Ana', 'Luis', 'Marta', ... 1 more item ]       │
+│ 50      │ 'Validar nota "7.5"'                           │ true     │ true                                              │ true                                              │
+│ 51      │ 'Validar nota "0"'                             │ true     │ true                                              │ true                                              │
+│ 52      │ 'Validar nota "10"'                            │ true     │ true                                              │ true                                              │
+│ 53      │ 'Validar nota ""'                              │ true     │ false                                             │ false                                             │
+│ 54      │ 'Validar nota "   "'                           │ true     │ false                                             │ false                                             │
+│ 55      │ 'Validar nota "11"'                            │ true     │ false                                             │ false                                             │
+│ 56      │ 'Validar nota "-1"'                            │ true     │ false                                             │ false                                             │
+│ 57      │ 'Validar nota "abc"'                           │ true     │ false                                             │ false                                             │
+│ 58      │ 'Validar nota "7px"'                           │ true     │ false                                             │ false                                             │
+│ 59      │ 'Validar nota "Infinity"'                      │ true     │ false                                             │ false                                             │
+│ 60      │ 'Validar nota "NaN"'                           │ true     │ false                                             │ false                                             │
+│ 61      │ 'ordenarPorNota acepta lista congelada'        │ true     │ true                                              │ true                                              │
+│ 62      │ 'ordenarPorNombre acepta lista congelada'      │ true     │ true                                              │ true                                              │
+│ 63      │ 'notaMedia acepta lista congelada'             │ true     │ true                                              │ true                                              │
+│ 64      │ 'notaMaxima acepta lista congelada'            │ true     │ true                                              │ true                                              │
+│ 65      │ 'aprobados acepta lista congelada'             │ true     │ true                                              │ true                                              │
+│ 66      │ 'nombresAprobados acepta lista congelada'      │ true     │ true                                              │ true                                              │
+│ 67      │ 'hayAlgunDiez acepta lista congelada'          │ true     │ true                                              │ true                                              │
+│ 68      │ 'todosAprobados acepta lista congelada'        │ true     │ true                                              │ true                                              │
+│ 69      │ 'Media de la clase'                            │ true     │ 6.15                                              │ 6.15                                              │
+│ 70      │ 'Aprobados de la clase'                        │ true     │ 7                                                 │ 7                                                 │
+└─────────┴────────────────────────────────────────────────┴──────────┴───────────────────────────────────────────────────┴───────────────────────────────────────────────────┘
+71/71 pruebas superadas

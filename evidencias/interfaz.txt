@@ -1,0 +1,18 @@
+1. OK · Inicio con diez alumnos y resumen correcto
+2. OK · Orden descendente y errata del enunciado
+3. OK · Filtro de suspensos no altera lista
+4. OK · Resumen sigue usando toda la clase
+5. OK · Nombre vacío rechazado
+6. OK · Duplicado ignorando mayúsculas rechazado
+7. OK · Nota vacía rechazada
+8. OK · Nota fuera de rango rechazada
+9. OK · Nota no numérica rechazada
+10. OK · Alta válida mantiene filtro e informa
+11. OK · Borrar desde vista filtrada elimina alumno correcto
+12. OK · Nota cero admitida
+13. OK · Nota diez admitida
+14. OK · Nombre con HTML permanece texto
+15. OK · Vista vacía tras borrar todos
+16. OK · Filtro sin coincidencias muestra mensaje
+17. OK · Datos iniciales permanecen intactos
+17/17 comprobaciones de interfaz correctas con DOM simulado.

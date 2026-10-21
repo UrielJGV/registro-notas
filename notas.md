@@ -71,3 +71,24 @@ Ninguna función de estadísticas altera el array original. Las copias son super
 pintarTabla es la única función que crea filas. Los selectores llaman a esa función; añadir y borrar llaman además a pintarResumen. El resumen usa la lista completa. Se rechazan nombres vacíos, duplicados y notas vacías, no numéricas o fuera de 0 a 10. Los nombres duplicados se comparan sin mayúsculas y sin espacios exteriores, pero conservando los acentos. Los mensajes se escriben sin alert. Se usa textContent para que un nombre se muestre como texto y no como código HTML.
 
 La aplicación guarda los cambios en memoria durante la sesión; recargar restaura los datos iniciales. No se ha añadido almacenamiento persistente porque no forma parte del enunciado.
+
+## Fase 5 · Depuración y documentación
+
+console.table(alumnos) presenta una fila por alumno y columnas de índice, nombre y nota. console.table(alumnos.map(a => a.nota)) presenta los índices y únicamente los valores numéricos de las notas. Los ejemplos se ejecutan sobre copias para no alterar el registro.
+
+| Fallo | Qué pasaba y por qué | Corrección | Herramienta |
+|---|---|---|---|
+| 1 · sort sin comparador | Devuelve [1, 10, 5, 9], porque compara texto | notas.sort((a, b) => a - b) produce [1, 5, 9, 10] | console.log |
+| 2 · copia = alumnos | Ordenar copia también reordena alumnos: ambas variables referencian el mismo array | const copia = [...alumnos]; después ordenar copia | console.table antes y después; comparación copia === alumnos |
+| 3 · reduce sin valor inicial | La lista vacía lanza TypeError: Reduce of empty array with no initial value | notas.reduce((a, b) => a + b, 0) devuelve 0 | Mensaje de la consola |
+| 4 · i <= alumnos.length | Intenta leer alumnos[alumnos.length].nombre, pero ese elemento es undefined | Usar i < alumnos.length o for (const alumno of alumnos) | console.log de los nombres y mensaje TypeError |
+
+Cada función de notas.js incluye descripción, @param, @returns y explicación de si modifica la lista. Los cuatro fragmentos con errores pueden repetirse con node depuracion.js. Los errores están capturados y no detienen la aplicación.
+
+## Verificación y entrega
+
+Resultados ejecutados: 71 de 71 pruebas de funciones y 17 de 17 comprobaciones de interfaz con DOM simulado. La suma de las diez notas es 61,5; la media es 6,15; hay siete aprobados y la máxima es 10. Una expectativa inicial de media 6,45 fue detectada por las pruebas y corregida tras sumar los datos; la función devolvía correctamente 6,15.
+
+El proyecto incluye cinco commits locales, uno por fase, y archivos de evidencias de consola. evidencias.html calcula ejemplos y pruebas cuando se abre en un navegador. Los resultados de Node.js y del DOM simulado no sustituyen una inspección visual del navegador.
+
+No se incluyen capturas reales de navegador ni se afirma que la web esté publicada. La publicación en GitHub Pages queda pendiente de un repositorio propio de destino: la conexión disponible solo expone un repositorio ajeno a esta práctica y no permite crear un repositorio nuevo mediante las herramientas actuales. La aplicación sí puede abrirse directamente desde index.html.
