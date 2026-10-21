@@ -24,3 +24,21 @@ Predicciones orientativas para comparar con la ejecución. Los bloques se ejecut
 2. q = p copia la referencia, por lo que ambas variables apuntan al mismo array. [...p] crea otro array y añadir un elemento a r no cambia p. Es una copia superficial: si los elementos fueran objetos, seguirían siendo referencias a los mismos objetos.
 3. sort sin comparador compara representaciones de texto; "10" va antes que "9". Para números se usa (x, y) => x - y.
 4. push y pop modifican el original; slice y map devuelven arrays nuevos. const impide reasignar la variable, pero no impide cambiar el contenido del array.
+
+## Fase 2 · Añadir, quitar, buscar y ordenar
+
+| Función | Efecto en la lista |
+|---|---|
+| anadirAlumno | Cambia: push añade al final |
+| quitarUltimo | Cambia: pop retira el último |
+| buscarPorNombre | No cambia: find consulta |
+| insertarEn | Cambia: splice inserta sin borrar |
+| borrarPorNombre | Cambia si encuentra un alumno: splice lo borra |
+| ordenarPorNota | No cambia: sort se aplica a [...lista] |
+| ordenarPorNombre | No cambia: sort se aplica a [...lista] |
+
+1. Se distingue por el método empleado y se comprueba comparando la lista antes y después; las pruebas verifican tanto contenido como identidad de las copias.
+2. sort modifica el array sobre el que se ejecuta. La copia impide reordenar la lista de origen.
+3. Sin comparador, las notas 10, 9 y 1 quedarían [1, 10, 9], al ordenarse como texto.
+
+Corrección del enunciado: con los datos iniciales, el orden correcto empieza por Lucía (10), Marta (9,25) y Hugo (9). La indicación de que Hugo debe quedar segundo contradice la nota de Marta.
