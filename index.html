@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Registro de notas con arrays, filtros y estadísticas.">
+  <title>Registro de notas · Práctica 2</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="notas.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<header class="cabecera"><a class="marca" href="index.html"><span aria-hidden="true">N</span> Registro de notas</a><p>DWEC / PRÁCTICA 02</p></header>
+<main>
+  <div class="intro"><p class="etiqueta">EL AULA, EN UN VISTAZO</p><h1>Cada nota cuenta.</h1><p>Consulta la clase, organiza sus resultados y añade nuevos alumnos.</p></div>
+  <section class="resumen" aria-labelledby="titulo-resumen"><h2 id="titulo-resumen" class="solo-lector">Resumen de toda la clase</h2><div id="resumen" class="metricas" aria-live="polite"></div></section>
+  <div class="distribucion">
+    <section class="panel listado" aria-labelledby="titulo-lista">
+      <div class="titulo-panel"><div><h2 id="titulo-lista">Alumnos de la clase</h2><p id="cantidad-visible" aria-live="polite"></p></div><span class="insignia">CURSO ACTUAL</span></div>
+      <div class="controles"><label for="filtro">Mostrar<select id="filtro"><option value="todos">Todos</option><option value="aprobados">Aprobados</option><option value="suspensos">Suspensos</option></select></label><label for="orden">Ordenar por<select id="orden"><option value="nombre">Nombre</option><option value="nota-desc">Nota más alta primero</option><option value="nota-asc">Nota más baja primero</option></select></label></div>
+      <div class="tabla-contenedor"><table><caption class="solo-lector">Alumnos según el filtro y orden seleccionados</caption><thead><tr><th scope="col">Nombre</th><th scope="col">Nota</th><th scope="col" class="acciones">Acciones</th></tr></thead><tbody id="filas-alumnos"></tbody></table></div>
+      <p class="pie-tabla">Aprobado: nota ≥ 5 · Suspenso: nota &lt; 5</p>
+    </section>
+    <aside class="panel alta" aria-labelledby="titulo-alta"><p class="etiqueta">AMPLÍA EL REGISTRO</p><h2 id="titulo-alta">Añadir alumno</h2><p>Introduce su nombre y una nota entre 0 y 10.</p><form id="formulario-alumno" novalidate><label for="nombre">Nombre<input id="nombre" name="nombre" type="text" placeholder="Por ejemplo, Eva" autocomplete="off" required></label><label for="nota">Nota<input id="nota" name="nota" type="number" min="0" max="10" step="any" placeholder="8.5" required></label><button class="principal" type="submit">Añadir alumno <span aria-hidden="true">＋</span></button></form><p id="mensaje" role="status" aria-live="polite"></p><p class="ayuda">El resumen incluye toda la clase, aunque apliques un filtro. Al recargar la página se recuperan los diez alumnos iniciales.</p></aside>
+  </div>
+  <footer><p>Práctica 2 · Arrays · 2º DAW</p><a href="evidencias.html">Ver ejemplos y comprobaciones →</a></footer>
+</main>
+</body></html>

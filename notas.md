@@ -62,3 +62,12 @@ Para Ana 7,5, Luis 4, Marta 9,25 y Pablo 5: media 6,4375; máxima 9,25; aprobado
 3. map transforma cada elemento y mantiene la cantidad: aprobados(lista).map(a => a.nombre) devuelve nombres. filter selecciona elementos: lista.filter(a => a.nota >= 5) devuelve solo los aprobados.
 
 Ninguna función de estadísticas altera el array original. Las copias son superficiales: no se editan los objetos de alumnos.
+
+## Fase 4 · Tabla dinámica
+
+1. filtrarAlumnos y ordenarAlumnos devuelven copias para que cambiar la vista no elimine ni reordene permanentemente los datos de trabajo. El filtro «todos» también devuelve un array diferente.
+2. Si ordenarAlumnos modificara el original, cambiaría el orden de inserción, y futuras operaciones como quitar el último alumno actuarían sobre el último de la vista ordenada en lugar del último añadido.
+
+pintarTabla es la única función que crea filas. Los selectores llaman a esa función; añadir y borrar llaman además a pintarResumen. El resumen usa la lista completa. Se rechazan nombres vacíos, duplicados y notas vacías, no numéricas o fuera de 0 a 10. Los nombres duplicados se comparan sin mayúsculas y sin espacios exteriores, pero conservando los acentos. Los mensajes se escriben sin alert. Se usa textContent para que un nombre se muestre como texto y no como código HTML.
+
+La aplicación guarda los cambios en memoria durante la sesión; recargar restaura los datos iniciales. No se ha añadido almacenamiento persistente porque no forma parte del enunciado.

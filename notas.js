@@ -107,3 +107,40 @@ function todosAprobados(lista) { return lista.every(alumno=>alumno.nota>=5); }
  * @returns {{nombre:string, nota:number}[]} Nuevo array con hasta n alumnos; vacío si n es inválido.
  */
 function ranking(lista,n) { return Number.isInteger(n) && n>=0 ? ordenarPorNota(lista).slice(0,n) : []; }
+
+/** Filtra los alumnos. No modifica la lista y siempre devuelve otro array.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @param {string} filtro todos, aprobados o suspensos.
+ * @returns {{nombre:string, nota:number}[]} Copia filtrada; filtros desconocidos muestran todos.
+ */
+function filtrarAlumnos(lista,filtro) {
+  if (filtro === 'aprobados') return aprobados(lista);
+  if (filtro === 'suspensos') return lista.filter(alumno=>alumno.nota<5);
+  return [...lista];
+}
+
+/** Ordena mediante las funciones de la fase 2. No modifica la lista.
+ * @param {{nombre:string, nota:number}[]} lista Alumnos.
+ * @param {string} criterio nombre, nota-desc o nota-asc.
+ * @returns {{nombre:string, nota:number}[]} Copia ordenada; por defecto, alfabéticamente.
+ */
+function ordenarAlumnos(lista,criterio) {
+  if (criterio === 'nota-desc') return ordenarPorNota(lista);
+  if (criterio === 'nota-asc') return ordenarPorNota(lista).reverse();
+  return ordenarPorNombre(lista);
+}
+
+/** Comprueba que el texto represente una nota finita entre 0 y 10. No recibe ni modifica listas.
+ * @param {string} texto Valor del campo numérico, con punto decimal.
+ * @returns {boolean} Si el campo no está vacío y la nota es válida.
+ */
+function esNotaValida(texto) {
+  return typeof texto === 'string' && texto.trim() !== '' && Number.isFinite(Number(texto)) && Number(texto)>=0 && Number(texto)<=10;
+}
+
+// Permite probar las mismas funciones con Node.js, sin dependencias.
+if (typeof module !== 'undefined' && module.exports) module.exports = {
+  ALUMNOS_INICIALES,anadirAlumno,quitarUltimo,buscarPorNombre,insertarEn,borrarPorNombre,
+  ordenarPorNota,ordenarPorNombre,notaMedia,notaMaxima,aprobados,nombresAprobados,
+  hayAlgunDiez,todosAprobados,ranking,filtrarAlumnos,ordenarAlumnos,esNotaValida
+};
